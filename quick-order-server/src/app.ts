@@ -25,6 +25,6 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 connectDB();
-seedProducts();
+// seedProducts();
 
 export default app;
