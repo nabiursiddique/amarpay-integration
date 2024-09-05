@@ -36,9 +36,21 @@ const createOrder = async (orderData: any) => {
 
   await order.save();
 
+  const paymentData = {
+    transactionId,
+    totalPrice,
+    customerName: user.name,
+    customerEmail: user.email,
+    customerPhone: user.phone,
+    customerAddress: user.address,
+  };
+
   // payment
-  initiatePayment();
-  return order;
+  const paymentSession = await initiatePayment(paymentData);
+
+  console.log(paymentSession);
+
+  return paymentSession;
 };
 
 export const orderService = {
