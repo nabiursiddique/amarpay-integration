@@ -1,7 +1,7 @@
 import orderModel from "../order/order.model";
 import { verifyPayment } from "./payment.utils";
 
-const confirmationService = async (transactionId: string) => {
+const confirmationService = async (transactionId: string, status: string) => {
   const verifyResponse = await verifyPayment(transactionId);
   console.log(verifyResponse);
 
@@ -15,7 +15,7 @@ const confirmationService = async (transactionId: string) => {
     );
   }
 
-  return result;
+  return `<h1>Payment ${status}</h1>`;
 };
 
 export const paymentServices = {
